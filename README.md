@@ -7,25 +7,28 @@ Exabloom BE is a high-performance backend system, built with Node.js and Postgre
 ---
 
 ## 📂 Project Structure
-
+```markdown
+```plaintext
 exabloom_be/
-│── src/
+├── src/
 │   ├── config/
-│   │   ├── db.js             # Database connection setup
+│   │   └── db.js                 # Database connection setup
 │   ├── routes/
-│   │   ├── conversations.js  # Routes for retrieving recent conversations
+│   │   └── conversations.js      # Routes for retrieving recent conversations
 │   ├── scripts/
-│   │   ├── test_db.js        # Script to test DB connection
-│   │   ├── create_tables.js  # Script to create tables & triggers
-│   │   ├── populate_tables.js # Script to import CSV data
-│── data/
-│   ├── contacts.csv          # Sample contact data
-│   ├── messages.csv          # Sample message data
-│── .env                      # Environment variables
-│── .gitignore                # Ignore node_modules, .env, etc.
-│── package.json              # Project dependencies
-│── README.md                 # Documentation
-│── server.js  
+│   │   ├── test_db.js            # Script to test DB connection
+│   │   ├── create_tables.js      # Script to create tables, triggers, and indexes
+│   │   ├── populate_tables.js    # Script to populate tables with sample data
+│   │   ├── generate_contacts.js  # Script to generate sample contact data
+│   │   └── generate_messages.js  # Script to generate sample message data
+├── data/
+│   └── message_content.csv       # Sample message data
+├── .env                          # Environment variables
+├── .gitignore                    # Ignore node_modules, .env, etc.
+├── package.json                  # Project dependencies
+├── README.md                     # Documentation
+└── server.js                     # Entry point for the backend server
+```
 
 ---
 
@@ -128,22 +131,22 @@ exabloom_be/
 #### 4. **Generate Data for Database**
    - To generate sample data for contacts and messages, you can use the following scripts:
      - **Generate Contacts**:
-       - Run the `scripts/generate_contacts.js` script to generate a `contacts.csv` file:
+       - Run the `scripts/generate_contacts.js` script to generate a `data/contacts.csv` file:
          ```sh
          node scripts/generate_contacts.js
          ```
-       - This will create a `contacts.csv` file with sample contact data.
+       - This will create a `data/contacts.csv` file with sample contact data.
      - **Generate Messages**:
-       - Run the `scripts/generate_messages.js` script to generate a `messages.csv` file:
+       - Run the `scripts/generate_messages.js` script to generate a `data/messages.csv` file:
          ```sh
          node scripts/generate_messages.js
          ```
-       - This will create a `messages.csv` file with sample message data.
+       - This will create a `data/messages.csv` file with sample message data.
 
 #### 5. **Populate the Database with Sample Data**
    - To import contacts and messages from CSV files, run the following script:
      ```sh
-     node src/scripts/populate_tables.js
+     node scripts/populate_tables.js
      ```
    - This script will execute:
      ```sql
@@ -152,7 +155,7 @@ exabloom_be/
      DELIMITER ','
      CSV;
 
-     COPY messages(from_contact_id, to_contact_id, content, created_at)
+     COPY messages (from_contact_id, to_contact_id, content, created_at)
      FROM '/absolute/path/to/data/messages.csv'
      DELIMITER ','
      CSV;
@@ -209,4 +212,4 @@ exabloom_be/
 - Start the backend server with:
   ```sh
   node server.js
-```
+  ```
