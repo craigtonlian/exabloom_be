@@ -12,14 +12,14 @@ exabloom_be/
 ├── src/
 │   ├── config/
 │   │   └── db.js                 # Database connection setup
-│   ├── routes/
-│   │   └── conversations.js      # Routes for retrieving recent conversations
-│   ├── scripts/
-│   │   ├── test_db.js            # Script to test DB connection
-│   │   ├── create_tables.js      # Script to create tables, triggers, and indexes
-│   │   ├── populate_tables.js    # Script to populate tables with sample data
-│   │   ├── generate_contacts.js  # Script to generate sample contact data
-│   │   └── generate_messages.js  # Script to generate sample message data
+│   └── routes/
+│       └── conversations.js      # Routes for retrieving recent conversations
+├── scripts/
+│   ├── test_db.js                # Script to test DB connection
+│   ├── create_tables.js          # Script to create tables, triggers, and indexes
+│   ├── populate_tables.js        # Script to populate tables with sample data
+│   ├── generate_contacts.js      # Script to generate sample contact data
+│   └── generate_messages.js      # Script to generate sample message data
 ├── data/
 │   └── message_content.csv       # Sample message data
 ├── .env                          # Environment variables
