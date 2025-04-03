@@ -1,0 +1,28 @@
+{
+  "name": "exabloom_be",
+  "version": "1.0.0",
+  "description": "## Setup Instructions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigtonlian/exabloom_be.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/craigtonlian/exabloom_be/issues"
+  },
+  "homepage": "https://github.com/craigtonlian/exabloom_be#readme",
+  "dependencies": {
+    "@faker-js/faker": "^9.6.0",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "fast-csv": "^5.0.2",
+    "fs": "^0.0.1-security",
+    "pg": "^8.14.1"
+  }
+}
