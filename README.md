@@ -8,7 +8,6 @@ Exabloom BE is a high-performance backend system, built with Node.js and Postgre
 
 ## 📂 Project Structure
 ```markdown
-```plaintext
 exabloom_be/
 ├── src/
 │   ├── config/
