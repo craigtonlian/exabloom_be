@@ -1,17 +1,17 @@
-const express = require('express');
-const conversationsRouter = require('./routes/conversationsRouter');
+const express = require("express");
+const conversations = require("./src/routes/conversations");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use('/api', conversationsRouter);
+app.use("/api", conversations);
 
-app.get('/', (req, res) => {
-    res.send('Exabloom BE is running!');
+app.get("/", (req, res) => {
+  res.send("Exabloom BE is running!");
 });
 
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

@@ -1,13 +1,13 @@
-const path = require('path');
-const pool = require('../src/config/db');
+const path = require("path");
+const pool = require("../src/config/db");
 
 async function populateDatabase() {
   const client = await pool.connect();
   try {
     console.log("🚀 Populating database with contacts and messages...");
 
-    const contactsPath = path.resolve(__dirname, '../data/contacts.csv');
-    const messagesPath = path.resolve(__dirname, '../data/messages.csv');
+    const contactsPath = path.resolve(__dirname, "../data/contacts.csv");
+    const messagesPath = path.resolve(__dirname, "../data/messages.csv");
 
     console.log("⏳ Processing contacts table...");
     await client.query(`

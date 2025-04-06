@@ -1,15 +1,16 @@
-const express = require('express');
-const pool = require('../src/config/db');
+const express = require("express");
+const pool = require("../config/db");
 const router = express.Router();
 
 // Route to get conversations with pagination and search
-router.get('/conversations', async (req, res) => {
-    try {
-        const { page = 1, searchValue = '' } = req.query;
-        const limit = 50;
-        const offset = (page - 1) * limit;
+router.get("/conversations", async (req, res) => {
+  try {
+    const start = Date.now();
+    const { page = 1, searchValue = "" } = req.query;
+    const limit = 50;
+    const offset = (page - 1) * limit;
 
-        const query = `
+    const query = `
             SELECT DISTINCT ON (m.created_at, LEAST(m.from_contact_id, m.to_contact_id), GREATEST(m.from_contact_id, m.to_contact_id))
                 m.from_contact_id,
                 m.to_contact_id, 
@@ -32,12 +33,14 @@ router.get('/conversations', async (req, res) => {
             LIMIT 50 OFFSET $2;
         `;
 
-        const { rows } = await pool.query(query, [`%${searchValue}%`, offset]);
-        res.json(rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Error fetching conversations' });
-    }
+    const { rows } = await pool.query(query, [`%${searchValue}%`, offset]);
+    const end = Date.now();
+    console.log(`Query took ${end - start} ms`);
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error fetching conversations" });
+  }
 });
 
 module.exports = router;

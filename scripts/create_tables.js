@@ -1,10 +1,10 @@
-const pool = require('../src/config/db');
+const pool = require("../src/config/db");
 
 async function createTables() {
   const client = await pool.connect();
 
   try {
-    await client.query('BEGIN');
+    await client.query("BEGIN");
 
     // Create contacts table
     const createContactsTableQuery = `
@@ -78,10 +78,10 @@ async function createTables() {
     // Execute index creation
     await client.query(createIndexesQuery);
 
-    await client.query('COMMIT');
+    await client.query("COMMIT");
     console.log("✅ Tables, triggers, and indexes created successfully.");
   } catch (err) {
-    await client.query('ROLLBACK');
+    await client.query("ROLLBACK");
     console.error("❌ Error creating tables, triggers, or indexes:", err);
   } finally {
     client.release();
